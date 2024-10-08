@@ -17,8 +17,13 @@ header {
     text-align: center;
 }
 header h1 {
-    margin-bottom: 20px;
-    font-size: 2.5em;
+    margin-bottom: 5px;
+    font-size: 2.3em;
+}
+header h2 {
+    font-size: 2.5em; /* Adjust font size for your name */
+    margin: 0; /* Remove default margin */
+    font-weight: bold; /* Make the name bold */
 }
 header p {
     font-size: 1.2em;
@@ -47,6 +52,7 @@ footer a:hover {
     position: sticky;
     top: 0;
     z-index: 100;
+    overflow: hidden;
 }
 .menu-bar ul {
     list-style-type: none;
@@ -54,10 +60,15 @@ footer a:hover {
     padding: 0;
     display: flex;
     justify-content: center;
+    flex-wrap: nowrap; /* Prevent wrapping */
 }
+
 .menu-bar ul li {
-    margin: 0 20px;
+    flex-grow: 1; /* Allow items to grow to fill space */
+    text-align: center; /* Center align text */
 }
+
+
 .menu-bar ul li a {
     text-decoration: none;
     color: #333;
@@ -81,12 +92,14 @@ footer a:hover {
 /* Responsive Design: Adjust spacing for smaller screens */
 @media (max-width: 768px) {
     .menu-bar ul li {
-        margin: 0 15px; /* Reduce spacing between items for medium screens */
-        font-size: 1.1em; /* Slightly smaller font size */
+        margin: 0 5px; /* Reduce space between items */
     }
+}
 
+@media (max-width: 480px) {
     .menu-bar ul li a {
-        padding: 8px 15px; /* Adjust padding for compactness */
+        font-size: 1em; /* Further reduce font size */
+        padding: 5px 10px; /* Further reduce padding */
     }
 }
 
@@ -173,6 +186,8 @@ h2 {
     transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.2s ease-in-out; /* Smooth transition for the glow effect */
     opacity: 0; /* Hide initially */
     transform: translateY(50px); /* Shifted down */
+    flex-wrap: wrap; /* Allow wrapping of items */
+    margin: 20px 0;
 }
 
 .project-item:hover {
@@ -189,13 +204,30 @@ h2 {
 
 /* Project description on the left */
 .project-description {
-    width: 50%;
-    padding-right: 20px;
+    flex: 1 1 60%; /* Take up 60% of space, shrink and grow as needed */
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.project-description p:first-of-type {
+    flex: none; /* Ensures only the first paragraph stays next to the image */
+}
+.project-description p:nth-of-type(n+2) {
+    flex: 1 1 100%;
+    margin-top: 20px; /* Moves subsequent paragraphs below the image */
 }
 /* Project image on the right */
 .project-image {
-    width: 50%;
+    flex: 1 1 30%; /* Take up 30% of space, shrink and grow as needed */
+    max-width: 300px; /* Optional: Set max width for image */
+    height: auto;
+    align-self: flex-start;
 }
+.project-extra {
+    flex-basis: 100%; /* Takes the full width below the image */
+    margin-top: 20px; /* Adds space between image and the extra paragraphs */
+}
+
 .project-image img {
     max-width: 100%;
     height: auto;
@@ -334,3 +366,29 @@ h2 {
         margin-bottom: 10px; /* Add extra space between stacked items */
     }
 }
+
+.education-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove spacing between cells */
+    margin-top: 20px; /* Space above the table */
+}
+
+.education-table th, .education-table td {
+    border: 1px solid #ddd; /* Border for the table cells */
+    padding: 10px; /* Padding inside cells */
+    text-align: left; /* Left-align text */
+}
+
+.education-table th {
+    background-color: #a30ad1; /* Background color for header */
+    color: white; /* Text color for header */
+}
+
+.education-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light background for even rows */
+}
+
+.education-table tr:hover {
+    background-color: #ddd; /* Change background on hover */
+}
+
