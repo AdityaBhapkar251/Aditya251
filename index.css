@@ -1,0 +1,336 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: url('index.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    backdrop-filter: blur(3px);
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+header h1 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+header p {
+    font-size: 1.2em;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+footer a {
+    color: #c734da;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #d49e00;
+}
+
+/* Menu Bar */
+.menu-bar {
+    background-color: #a30ad1;
+    padding: 15px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.menu-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.menu-bar ul li {
+    margin: 0 20px;
+}
+.menu-bar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+}
+.menu-bar ul li a:hover {
+    background-color: #333;
+    color: #fff;
+}
+/* Active menu item */
+.menu-bar ul li a.active {
+    background-color: #333; /* Highlight the selected menu item */
+    color: #fff; /* Change the text color to white */
+}
+
+/* Responsive Design: Adjust spacing for smaller screens */
+@media (max-width: 768px) {
+    .menu-bar ul li {
+        margin: 0 15px; /* Reduce spacing between items for medium screens */
+        font-size: 1.1em; /* Slightly smaller font size */
+    }
+
+    .menu-bar ul li a {
+        padding: 8px 15px; /* Adjust padding for compactness */
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-bar ul li {
+        margin: 0 10px; /* Further reduce spacing between items for small screens */
+        font-size: 1em; /* Smaller font size for mobile */
+    }
+
+    .menu-bar ul li a {
+        padding: 5px 10px; /* Further reduce padding for small screens */
+    }
+}
+
+
+
+/* Sections */
+.content-section {
+    display: none; /* Initially hidden */
+    padding: 50px 0;
+    background-color: rgba(255, 255, 255, 0.8);
+        opacity: 0; /* Hidden by default for animation */
+    transform: translateY(20px); /* Slide from 20px below */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for fade-in and slide-up */
+}
+/* When the section becomes visible, add this class */
+/* When the section is active, only text/content fades in */
+.content-section.active  {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Add fade-in/slide-in effect to content */
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Start from 20px down */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at the normal position */
+    }
+}
+
+.fade-in-slide-up {
+    animation: fadeInSlideUp 0.5s ease-in-out;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 0 20px; /* Add some padding for smaller screens */
+}
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Projects */
+.project {
+    margin-bottom: 30px;
+}
+.project h3 {
+    font-size: 1.8em;
+}
+.project a {
+    text-decoration: none;
+    color: #f4b400;
+}
+.project a:hover {
+    color: #d49e00;
+}
+
+/* Initial state of the project items */
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+    border: 2px solid #a30ad1; /* Add a solid border around each project */
+    border-radius: 10px; /* Round the corners slightly */
+    box-shadow: 0 0 15px rgba(163, 10, 209, 0.6); /* Glowing border effect */
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.2s ease-in-out; /* Smooth transition for the glow effect */
+    opacity: 0; /* Hide initially */
+    transform: translateY(50px); /* Shifted down */
+}
+
+.project-item:hover {
+    box-shadow: 0 0 35px rgba(163, 10, 209, 0.9); /* Intensify the glow when hovering */
+    
+}
+
+/* Reveal effect - when the project is in view */
+.project-item.show {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Return to original position */
+    box-shadow: 0 0 25px rgba(163, 10, 209, 0.);
+}
+
+/* Project description on the left */
+.project-description {
+    width: 50%;
+    padding-right: 20px;
+}
+/* Project image on the right */
+.project-image {
+    width: 50%;
+}
+.project-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+}
+
+.content-section.active {
+    display: block;
+}
+/* Fade-in and slide-up animation class */
+.fade-in-slide-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlideUp 0.6s forwards;
+}
+
+@keyframes fadeSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.project-item:nth-child(1) {
+    transition-delay: 0.1s; transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.project-item:nth-child(2) {
+    transition-delay: 0.5s; transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.project-item:nth-child(3) {
+    transition-delay: 1s; transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+
+/* Skills */
+#skills ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+#skills ul li {
+    margin: 0 20px;
+    font-size: 1.2em;
+}
+
+/* Skills Section */
+.skills-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Wrap on smaller screens */
+    margin-top: 30px;
+    
+}
+
+/* Frontend and Backend categories */
+.skills-category {
+    width: 1 1 45%; /* 45% width for each category */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Hidden initially for animation */
+    transform: translateY(20px); /* Slightly lower */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.skills-category.active {
+    opacity: 1; /* Fade-in */
+    transform: translateY(0); /* Slide-up to normal position */
+}
+
+.skills-category h3 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Allow list items to wrap */
+    justify-content: flex-start; /* Center the wrapped list items */
+}
+
+.skills-list li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    word-wrap: break-word; /* Prevent long words from overflowing */
+    flex: 1 1 30%; /* Each item takes up 30% of the width, wrapping as needed */
+    min-width: 100px;
+    box-sizing: border-box;
+}
+
+.skills-list li:hover {
+    transform: translateY(-5px); /* Hover animation */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+/* Staggered Animation */
+.skills-category.frontend {
+    transition-delay: 0.1s;
+}
+
+.skills-category.backend {
+    transition-delay: 0.2s;
+}
+
+/* Responsive Design: Stack on smaller screens */
+@media (max-width: 768px) {
+    .skills-category {
+        flex: 1 1 100%; /* Full width on small screens */
+        margin-bottom: 20px;
+    }
+    .skills-list li {
+        flex: 1 1 45%;
+        font-size: 1em; /* Smaller font size for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-list li {
+        flex: 1 1 100%; /* Stack list items fully on very small screens */
+        margin-bottom: 10px; /* Add extra space between stacked items */
+    }
+}
